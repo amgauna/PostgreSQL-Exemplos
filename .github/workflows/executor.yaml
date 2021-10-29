@@ -1,0 +1,23 @@
+trabalhos:
+  # Etiqueta do trabalho do contêiner
+  container-job:
+    # Os contêineres devem ser executados em sistemas operacionais baseados no Linux
+    runs-on: ubuntu-latest
+    # Imagem do Docker Hub em que o `container-job` é executado
+    contêiner: node:10.18-jessie
+
+    # Contêineres de serviço a serem executados com `container-job`
+    serviços:
+      # Etiqueta usada para acessar o contêiner de serviço
+      postgres:
+        # Imagem do Docker Hub
+        imagem: postgres
+        # Fornece a senha para o postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Define as verificações gerais até a inicialização do postgres
+        opções: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
