@@ -21,3 +21,21 @@ VALUES (1, ´5042002-7', '22/03/1958',
   'Mamografia da Paciente' /* comentário */
   ))
   
+SELECT id, registro,
+       (QScoreFromStr(
+       mama,
+       'QbTextureFeatureClass file-<server,"C:/pesq.bmp">'
+       ) AS ScoreMama
+FROM paciente
+WHERE CAST (mama As varchar(250)) IN
+      (SELECT CAST(image_id AS varchar(25))
+      FROM TABLE (
+           QbScoreTBFromStr(
+              'QbTextureFeatureClass file-<server,"c:/pesq.bmp">',
+               /* query string */
+               paciente, /* tabela de consulta */
+               mama, /* campo da tabela de consulta */
+               10 )  /* Numero de imagens mais similares */
+               ) AS Tabela1 )
+ORDER BY ScoreMama;
+               
