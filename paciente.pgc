@@ -7,8 +7,17 @@ ENABLE TABLE paciente FOR DG2IMAGE;
 ENABLE COLUMN paciente mama FOR DB2IMAGE;
 
 INSERT INTO paciente (id,registro,data_nasc,mama)
-VALUES (1, ´5042002-7', '22/03/1958', DB2IMAGE(
+VALUES (1, ´5042002-7', '22/03/1958', 
+  DB2IMAGE(
   CURRENT SERVER, /* nome do servidor de DB*/
   'c:/images/mamografia.bmp', /* arquivo da imagem */
-  'BMP', /* formato da imagem */
-  /* 'ASS' : 
+  'BMP', /* formato origem da imagem */
+  'GIF', /* formato destino da imagem */
+  '-x 110 -y 150', /* opções de conversão */
+  'c:/images/mamografia.gif', /* imagem destino */
+  /* 'ASIS' : Permite o Image encontrar o formato */
+  MMDB_STORAGE_TYPE_INTERNAL, /* armazenar no DB */
+  /* MMDB_STORAGE_EXTERNAL : armazenar no  arquivo*/
+  'Mamografia da Paciente' /* comentário */
+  ))
+  
