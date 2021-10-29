@@ -27,16 +27,4 @@ pgclient.query('SELECT * FROM student', (err, res) => {
     console.log(err, res.rows) // Print the data in student table
     pgclient.end()
 });
-O script cria uma nova conexão com o serviço PostgreSQL e usa as variáveis de ambiente POSTGRES_HOST e POSTGRES_PORT para especificar o endereço e porta do serviço do PostgreSQL. Se o host e a porta não forem definidos, o host-padrão será localhost e a porta-padrão será 5432.
 
-O script cria uma tabela e preenche com dados de espaço reservado. Para testar se o banco de dados postgres contém os dados, o script imprime o conteúdo da tabela no registro do console.
-
-Ao executar este fluxo de trabalho, você verá a seguinte saída na etapa "Conectar ao PostgreSQL", que confirma que você criou com sucesso a tabela do PostgreSQL e adicionou dados:
-
-null [ { id: 1,
-    primeiro nome: 'Mona the',
-    último nome: 'Octocat',
-    idade: 9,
-    endereço:
-     '88 Colin P Kelly Jr St, São Francisco, CA 94107, Estados Unidos',
-    e-mail: 'octocat@github.com' } ]
