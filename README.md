@@ -8,3 +8,4 @@
 
 # O que é o PostgreSQL? Instalando e criando o Banco de Dados = https://hcode.com.br/blog/o-que-e-o-postgresql-instalando-e-criando-primeiro-banco-de-dados
 
+# GitHub manual para criar containers do PostgreSQL = https://docs.github.com/pt/actions/using-containerized-services/creating-postgresql-service-containers
